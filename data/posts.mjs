@@ -26,10 +26,15 @@ export async function getAllByUserid(userid) {
 }
 
 // 글 번호(id)에 대한 포스트를 리턴
-export async function getById(id) {
-    return getPosts().find({ _id: new ObjectId(id) }).next().then(mapOptionalPost())
+export async function getById(postid) {
+    return getPosts().find({ _id: new ObjectId(postid) }).next().then(mapOptionalPost)
 }
 
+// 포스트 삭제
+export async function remove(postid) {
+    return getPosts().deleteOne({ _id: new ObjectId(postid) })
+} 
+
 function mapOptionalPost(post) {
-    return post ? { ...post, id: post._id.toString() } : post
+    return post ? { ...post, postid: post._id.toString() } : post
 }
