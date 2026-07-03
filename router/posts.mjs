@@ -18,7 +18,8 @@ router.get("/:id", isAuth, postController.getPost)
 router.post("/", isAuth, postController.createPost)
 
 // 포스트 수정하기
-
+// http://127.0.0.1:8080/post/:id (PUT)
+router.put("/:id", isAuth, postController.updatePost)
 
 // 포스트 삭제하기
 // http://127.0.0.1:8080/post/:id (DELETE)

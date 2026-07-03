@@ -30,6 +30,15 @@ export async function getById(postid) {
     return getPosts().find({ _id: new ObjectId(postid) }).next().then(mapOptionalPost)
 }
 
+// 포스트 수정
+export async function update(id, text) {
+    return getPosts().findOneAndUpdate(
+        { _id: new ObjectId(id) },
+        { $set: { text } },
+        { returnDocument: "after" }
+    ).then((result) => result)
+}
+
 // 포스트 삭제
 export async function remove(postid) {
     return getPosts().deleteOne({ _id: new ObjectId(postid) })

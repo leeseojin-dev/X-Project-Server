@@ -29,7 +29,20 @@ export async function getPost(req, res) {
 }
 
 // 포스트 수정하기
-
+// 포스트를 수정하는 함수
+export async function updatePost(req, res) {
+    const id = req.params.id
+    const text = req.body.text
+    const post = await postRepository.getById(id)
+    if(!post) {
+        return res.status(404).json({ message: `${id}의 포스트가 없습니다` })
+    }
+    if(post.idx !== req.id) {
+        return res.sendStatus(405)
+    }
+    const updated = await postRepository.update(id, text)
+    res.status(200).json(updated)
+}
 
 // 포스트 삭제하기
 // 포스트를 삭제하는 함수
