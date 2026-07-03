@@ -1,4 +1,6 @@
 import express from "express"
+import { isAuth } from "../middleware/auth.mjs"
+import * as postController from "../controller/posts.mjs"
 
 const router = express.Router()
 
@@ -9,7 +11,8 @@ const router = express.Router()
 
 
 // 포스트 쓰기
-
+// http://127.0.0.1:8080/post
+router.post("/", isAuth, postController.createPost)
 
 // 포스트 수정하기
 
