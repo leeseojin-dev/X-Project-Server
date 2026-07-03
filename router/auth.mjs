@@ -1,5 +1,6 @@
 import express from "express"
 import * as authController from "../controller/auth.mjs"
+import { isAuth } from "../middleware/auth.mjs"
 
 const router = express.Router()
 
@@ -15,7 +16,9 @@ router.post("/login", authController.login)
 
 // 로그인 유지 체크
 // http://127.0.0.1:8080/auth/me (GET)
-router.get("/me", authController.me)
+// Authorization > Bearer Token > 로그인 시 생성된 토큰을 넣어줌
+// isAuth > isAuth 안의 next() > authController.me
+router.get("/me", isAuth, authController.me)
 
 
 export default router

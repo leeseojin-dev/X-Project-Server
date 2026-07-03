@@ -14,6 +14,11 @@ export async function createUser(user) {
     return getUsers().insertOne(user).then((result) => result.insertedId.toString())
 }
 
+// 로그인 유지
+export async function findById(id) {        // Objectid를 의미
+    return getUsers().find({ _id: new ObjectId(id) }).next().then(mapOptionalUser)
+}
+
 function mapOptionalUser(user) {
     return user ? { ...user, id: user._id.toString() } : user
 }

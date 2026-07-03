@@ -6,6 +6,9 @@ import jwt from "jsonwebtoken"
 
 // 회원가입
 export async function signup(req, res) {
+    // console.log("method:", req.method)
+    // console.log("url:", req.url)
+    // console.log("headers:", req.headers)
     const { userid, password, name, email } = req.body
     // 회원 중복 체크
     const found = await authRepository.findByUserid(userid)
@@ -41,7 +44,14 @@ export async function login(req, res) {
 
 // 로그인 유지
 export async function me(req, res) {
-
+    // console.log("method:", req.method)
+    // console.log("url:", req.url)
+    // console.log("headers:", req.headers)
+    const user = await authRepository.findById(req.id)
+    if(!user) {
+        return res.status(404).json({ message: "일치하는 사용자가 없음" })
+    }
+    res.status(200).json({ token: req.token, userid: user.userid })
 }
 
 async function createJwtToken(id) {
