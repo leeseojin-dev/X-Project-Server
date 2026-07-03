@@ -14,3 +14,13 @@ export async function create(text, id) {
         return getPosts().findOne({ _id: result.insertedId })
     })
 }
+
+// 모든 포스트를 리턴
+export async function getAll() {
+    return getPosts().find().sort({ createdAt: -1 }).toArray()
+}
+
+// 사용자 아이디에 대한 포스트를 리턴
+export async function getAllByUserid(userid) {
+    return getPosts().find({ userid }).sort({ createdAt: -1 }).toArray()
+}
