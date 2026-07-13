@@ -1,0 +1,99 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    min-height: 100vh;
+    font-family: Arial, sans-serif;
+    background-color: #78A4CB;
+    color: #f9f9f9;
+}
+
+main {
+    max-width: 540px;
+    width: 94%;
+    margin: 0 auto;
+    padding: 0 20px;
+    text-align: center;
+}
+
+h2 {
+    margin-bottom: 28px;
+    font-size: 24px;
+    font-weight: 700;
+}
+
+#signupForm {
+    width: 100%;
+}
+
+/* 공통 input */
+.inputBox {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 14px;
+}
+
+.inputBox input {
+    width: 100%;
+    height: 44px;
+    padding: 0 12px;
+    border: 1px solid #cfcfcf;
+    border-radius: 10px;
+    font-size: 14px;
+    outline: none;
+}
+
+.inputBox input:focus {
+    border-color: #333;
+}
+
+/*submit 버튼 */
+.submitBtn {
+    width: 100%;
+    height: 46px;
+    border: none;
+    border-radius: 10px;
+    background-color: #ccc;
+    color: #fff;
+    font-size: 15px;
+    font-weight: 500;
+    cursor: pointer;
+}           
+
+.submitBtn.active,
+.submitBtn:hover {
+    background-color: #0f2b5f;
+}
+
+/* 로그인창, 회원가입창 돌아가기 */
+.linkBox {
+    margin-top: 18px;
+    font-size: 13px;
+    color: #d9d9d9;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.linkBox a {
+    margin-left: 8px;
+    color: #fff;
+    text-decoration: underline;
+}
+
+.linkBox a:last-child {
+    display: inline-block;
+    width: fit-content;
+}
+
+@media (max-width: 480px) {
+    .signupWrap {
+        margin-top: 40px;
+    }
+
+    .inputBox {
+        gap: 6px;
+    }
+}
