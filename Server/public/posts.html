@@ -4,9 +4,33 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>X-Project</title>
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/posts.css">
 </head>
 <body>
-    <h2>전체 게시물</h2>
-    <main></main>
+    <main>
+        <div class="topBar">
+            <h2>게시물</h2>
+            <button id="logoutBtn" type="button">로그아웃</button>
+        </div>
+
+        <form id="postForm">
+            <div class="inputBox">
+                <textarea id="text" name="text" placeholder="무슨 생각을 하고 계신가요?" maxlength="200"></textarea>
+            </div>
+            <button id="postBtn" class="submitBtn" type="submit">작성하기</button>
+        </form>
+
+        <form id="filterForm">
+            <div class="inputBox">
+                <input id="filterUserid" type="text" name="filterUserid" placeholder="아이디로 조회 (예: apple)" maxlength="20">
+                <button id="filterBtn" type="submit">조회</button>
+                <button id="resetBtn" type="button">전체보기</button>
+            </div>
+        </form>
+
+        <ul id="postList"></ul>
+    </main>
+    <script src="/js/posts.js"></script>
 </body>
 </html>
